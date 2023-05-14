@@ -1,8 +1,14 @@
+import './App.css';
+import {Header} from './Components/Header'
 function App() {
+  const company = {
+    name: 'Todo List',
+  };
+
   return (
-    <div className="App">
-      <button className="btn btn-primary">Hola</button>
-    </div>
+    <>
+      <Header company={company}/>
+    </>
   );
 }
 
