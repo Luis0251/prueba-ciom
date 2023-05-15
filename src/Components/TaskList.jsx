@@ -37,8 +37,6 @@ export const TaskList = ({ tasks, readTask, deleteTask, completeTask }) => {
           onChange={(e) => setFilterState(e.target.value)}
         >
           <option value="">All</option>
-          <option value="todo">To Do</option>
-          <option value="inprogress">In Progress</option>
           <option value="finalizado">Completed</option>
         </select>
       </div>
