@@ -1,7 +1,7 @@
 import React from 'react'
 import { TaskItem } from './TaskItem'
 
-export const TaskList = ({tasks, readTask, deleteTask}) => {
+export const TaskList = ({tasks, readTask, deleteTask,completeTask}) => {
   return (
     <section className='d-flex flex-column gap-3 col-md-6'>
         <h3 className="text-light text-center m-0"> 📰Tasks List📰 </h3>
@@ -9,7 +9,7 @@ export const TaskList = ({tasks, readTask, deleteTask}) => {
             {
                 tasks.length  ? (
                     tasks.map((task) => {
-                        return <TaskItem key={task.id} task={task} readTask={readTask} deleteTask={deleteTask}/>
+                        return <TaskItem completeTask={completeTask} key={task.id} task={task} readTask={readTask} deleteTask={deleteTask}/>
                     } )
                 ) : 
                     (
