@@ -20,9 +20,24 @@ export const Appoitments = () => {
     });
     setTasks(updateTasks);
     setTask({});
-    alert('warning', 'Actualizado');
+    alert('Actualizado');
   };
   
+  const completeTask = (id) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          state: "finalizado",
+        };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+    localStorage.setItem("TasksData", JSON.stringify(updatedTasks));
+  };
+  
+
   const deleteTask = (id) => {
     setTasks(tasks.filter((e) => {
       return e.id !== id;
@@ -55,7 +70,7 @@ useEffect(() => {
     <section className='container'>
         <div className='row justify-content-between gap-4'>
             <CustomForm submitTasksForm={submitTasksForm} task={task} />
-            <TaskList readTask={readTask} tasks={tasks} deleteTask={deleteTask}/>
+            <TaskList readTask={readTask} tasks={tasks} deleteTask={deleteTask} completeTask={completeTask}/>
         </div>
     </section>
   )

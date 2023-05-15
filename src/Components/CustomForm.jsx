@@ -41,7 +41,7 @@ const { name,  description, state, category} = formAppointment;
   }, [task]);
   return (
     <section className='d-flex flex-column gap-3 col-md-4'>
-        <h3 className='text-light text-center m-0'>📝Task📝</h3>
+        <h3 className='text-light text-center m-0'>📝{task.id ? 'Editar' : 'Crear'}Task📝</h3>
         <form className='text-dark rounded' 
         onSubmit={handleSubmit}
         >
@@ -52,7 +52,6 @@ const { name,  description, state, category} = formAppointment;
             placeholder="Enter the Task"
             className="form-control"
             value={name}
-            //onChange={}
             onChange={handleChange}
             required
           />
@@ -102,7 +101,7 @@ const { name,  description, state, category} = formAppointment;
         <button
           type="submit"
           className="btn btn-info w-100 fw-bold"
-        >Crear</button>
+        >{task.id ? 'Editar' : 'Crear'}</button>
         </form>
     </section>
   )

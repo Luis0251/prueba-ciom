@@ -1,15 +1,17 @@
 import React from "react";
 
-export const TaskItem = ({ task, readTask, deleteTask }) => {
+export const TaskItem = ({ task, readTask, deleteTask, completeTask }) => {
   const { name, id, description, state, category } = task;
   const handleDelete = () => {
     deleteTask(id);
   };
-
+  const handleFinish = () => {
+    completeTask(id);
+  };
   return (
     <li
-      className="d-flex flex-column gap-2 list-group-item list-group-item-action p-3 animate__animated animate__fadeInUp"
-      aria-current="true"
+    className={`d-flex flex-column gap-2 list-group-item list-group-item-action p-3 ${state === "finalizado" ? "bg-success" : ""}`}
+    aria-current="true"
     >
       <div className="d-flex align-items-center justify-content-between">
         <h5 className="m-0">
@@ -31,7 +33,7 @@ export const TaskItem = ({ task, readTask, deleteTask }) => {
           <span className="fw-bolder">State:</span> {state}
         </h6>
         <div className="d-flex gap-1">
-          <button className="btn btn-primary btn-sm">
+          <button className="btn btn-primary btn-sm" onClick={handleFinish}>
             <i className="bi bi-check-circle"></i>
           </button>
 
