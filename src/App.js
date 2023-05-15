@@ -1,8 +1,18 @@
+import './App.css';
+import {Header} from './Components/Header'
+import { Appoitments } from './Components/pages/Appointments';
 function App() {
+  const company = {
+    name: 'Todo List',
+  };
+
   return (
-    <div className="App">
-      <button className="btn btn-primary">Hola</button>
-    </div>
+    <>
+      <Header company={company}/>
+      <main className="py-3">
+        <Appoitments />
+      </main>
+    </>
   );
 }
 
