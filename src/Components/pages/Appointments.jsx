@@ -19,7 +19,9 @@ export const Appoitments = () => {
       return e.id !== id;
     }));
     setTask({});
+    localStorage.setItem('TasksData', JSON.stringify(tasks.filter((e) => e.id !== id)));
   };
+  
 
 const submitTasksForm = (task) => {
     createTask(task);
