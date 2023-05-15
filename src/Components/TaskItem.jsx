@@ -5,6 +5,7 @@ export const TaskItem = ({ task, readTask, deleteTask }) => {
   const handleDelete = () => {
     deleteTask(id);
   };
+
   return (
     <li
       className="d-flex flex-column gap-2 list-group-item list-group-item-action p-3 animate__animated animate__fadeInUp"
@@ -37,7 +38,7 @@ export const TaskItem = ({ task, readTask, deleteTask }) => {
           <button
             type="button"
             className="btn btn-warning btn-sm"
-            onClick={handleDelete}
+            onClick={() => readTask(id)}
           >
             <i className="bi bi-pencil-square"></i>
           </button>

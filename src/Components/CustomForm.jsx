@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 
 export const CustomForm = ({submitTasksForm, task}) => {
   
   const [formAppointment, setFormAppointment] = useState({
     name: '',
-    id: Date.now(),
+    id: '',
     description: '',
     state: '',
     category:''
@@ -17,7 +17,7 @@ const { name,  description, state, category} = formAppointment;
     submitTasksForm(formAppointment)
     setFormAppointment({
       name: '',
-      id: Date.now(),
+      id: '',
       description: '',
       state: '',
       category:''
@@ -26,6 +26,19 @@ const { name,  description, state, category} = formAppointment;
   const handleChange = (e)=> setFormAppointment({
     ...formAppointment, [e.target.name] : e.target.value
   });
+
+  useEffect(() => {
+    if (task.id) {
+      const { id, name, state, description, category } = task;
+      setFormAppointment({
+        id,
+        name,
+        state,
+        description,
+        category,
+      });
+    }
+  }, [task]);
   return (
     <section className='d-flex flex-column gap-3 col-md-4'>
         <h3 className='text-light text-center m-0'>📝Task📝</h3>

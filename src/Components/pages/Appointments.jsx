@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { TaskList } from '../TaskList';
 import { CustomForm } from '../CustomForm'
 
@@ -13,6 +13,15 @@ export const Appoitments = () => {
     localStorage.setItem('TasksData', JSON.stringify([...tasks, task]))
     alert('Creado')
   }
+
+  const updateTask = (task) => {
+    const updateTasks = tasks.map((element) => {
+      return task.id === element.id ? task : element;
+    });
+    setTasks(updateTasks);
+    setTask({});
+    alert('warning', 'Actualizado');
+  };
   
   const deleteTask = (id) => {
     setTasks(tasks.filter((e) => {
@@ -24,9 +33,16 @@ export const Appoitments = () => {
   
 
 const submitTasksForm = (task) => {
+  if (task.id === '') {
     createTask(task);
+  } else {
+    updateTask(task);
+  }
 };
 
+useEffect(() => {
+  localStorage.setItem('TasksData', JSON.stringify(tasks));
+}, [tasks]);
 
   const readTask = (id) => {
     const task = tasks.find((element) => {
